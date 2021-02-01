@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+{% extends 'base.html' %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width-device=width, initial-scale=1.0">
+    <title>Register</title>
+    {% load static %}
+    <link rel="stylesheet" href="{%static 'bootstrap-4\css\bootstrap.min.css'%}">
+</head>
+<body>
+{% block content %}
+<div class="container col-sm-4 mt-sm-3">
+    <table class="table table-light justify-content-center">
+        <h2>Registration Form</h2>
+        <form method="POST" action="">
+        {% csrf_token %}
+            <tr>
+                <td>First Name</td>
+                <td><input type="text" name="first_name" placeholder="First Name"></td>
+            </tr>
+            <tr>
+                <td>Last Name</td>
+                <td><input type="text" name="last_name" placeholder="Last Name"></td>
+            </tr>
+            <tr>
+                <td>Email</td>
+                <td><input type="text" name="email" placeholder="Email"></td>
+            </tr>
+            <tr>
+                <td>Password</td>
+                <td><input type="password" name="password" placeholder="Password"></td>
+            </tr>
+            <tr>
+                <td><input type="submit" name="submit" class="btn btn-primary">
+        </form></td>
+                <td><a href="{% url 'login'%}" class="btn btn-primary">Login</a></td>
+            </tr>
+    </table>
+</div>
+    {% if messages %}
+        {% for msg in messages %}
+          {{msg}}
+        {% endfor %}
+    {% endif%}
+
+    {% endblock %}
+
+
+
+</body>
+</html>
